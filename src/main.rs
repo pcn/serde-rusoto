@@ -1,16 +1,16 @@
 #[macro_use]
 extern crate serde_derive;
 
-use rusoto_core::{Region, RusotoError};
-use rusoto_ec2::{DescribeInstancesRequest, Ec2, Ec2Client, Instance, Reservation};
+use rusoto_core::{Region};
+use rusoto_ec2::{DescribeInstancesRequest, Ec2, Ec2Client, Instance};
 
 use tokio::prelude::*;
 use serde_json;
 use chrono::prelude::*;
-use chrono::Duration;
+// use chrono::Duration;
 use std::fs::{File, rename};
 use std::io::prelude::*;
-use std::io::Read;
+// use std::io::Read;
 use std::path::Path;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -23,7 +23,7 @@ pub fn write_saved_json(account: &String, cache_dir: &String, region_name: &Stri
     // Interesting: in rust you can concat a &str onto a String.
     // Deref coercecions may be an interesting topic?
     // let pathname = format!("{}/{}_{}_ec2_instances.json", cache_dir, account, region_name);
-    let pathname = format!("/tmp/foo.json")
+    let pathname = format!("/tmp/foo.json");
     
     let tmp_pathname = pathname.to_owned() + ".tmp";
 
